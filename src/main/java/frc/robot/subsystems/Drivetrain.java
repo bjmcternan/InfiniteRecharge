@@ -243,6 +243,7 @@ public class Drivetrain extends SubsystemBase
         // Returns the velocity of the robot by taking the averga of the velcity on both sides of the robor
         return (getLeftEncoderVelocity() + getRightEncoderVelocity()) / 2.0d;
     }
+    
     private void zeroDriveTrainEncoders() 
     {
         leftTalonLead.setSelectedSensorPosition(0);
@@ -280,6 +281,11 @@ public class Drivetrain extends SubsystemBase
         gyro.setAngleAdjustment(startingAngleDegrees);
         
         System.out.println("Calibrating gyroscope done.");
+    }
+
+    public Position2D getPose()
+    {
+        return m_kinematics.getPose();
     }
 
     public void resetKinematics()
